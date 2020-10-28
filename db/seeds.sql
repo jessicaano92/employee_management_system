@@ -21,7 +21,7 @@ VALUES ("John", "Doe", 1, 3),
 ("John", "Doe", 1, 3), 
 ("John", "Doe", 1, 3), 
 ("John", "Doe", 1, 3), 
-("John", "Doe", 1, 3), 
+("John", "Doe", 1, 3),          --update names, id's, manager id's
 ("John", "Doe", 1, 3), 
 ("John", "Doe", 1, 3), 
 ("John", "Doe", 1, 3);
@@ -29,3 +29,6 @@ VALUES ("John", "Doe", 1, 3),
 SELECT * FROM employees;
 SELECT * FROM role;
 SELECT * FROM department;
+
+
+--try to join 
