@@ -18,13 +18,13 @@ VALUES ("Sales Lead", 100000, 1),
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES ("John", "Doe", 1, 3), 
-("John", "Doe", 1, 3), 
-("John", "Doe", 1, 3), 
-("John", "Doe", 1, 3), 
-("John", "Doe", 1, 3),          --update names, id's, manager id's
-("John", "Doe", 1, 3), 
-("John", "Doe", 1, 3), 
-("John", "Doe", 1, 3);
+("Mike", "Chan", 2, 1), 
+("Ashley", "Rodriguez", 3, null), 
+("Kevin", "Tupik", 4, 3), 
+("Malia", "Brown", 5, null),         
+("Sarah", "Louris", 6, null), 
+("Tom", "Allen", 7, 6), 
+("Christian", "Eckenrode", 8, 2);
 
 SELECT * FROM employees;
 SELECT * FROM role;
