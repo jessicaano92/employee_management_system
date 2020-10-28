@@ -1,40 +1,33 @@
 
 
---possibly add an INDEX for large amount of data
-      --special table for SQL for look ups in a more efficient way
+DROP DATABASE IF EXISTS employee_db;
 
---multi-join 
+CREATE DATABASE employee_db;
 
-
-DROP DATABASE IF EXISTS employeeSystem_db;
-CREATE DATABASE employeeSystem_db;
-USE employeeSystem_db;
+USE employee_db;
 
 
+CREATE TABLE department (   --table for the name of the department
+      id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+      department_name VARCHAR(30)
+);
 
-  CREATE TABLE department (
-      id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-      name VARCHAR(30),
-  );
 
-  CREATE TABLE role (
-      id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  CREATE TABLE role ( --table for the roles of the employees
+      id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
       title VARCHAR(30) NOT NULL, 
-      salary INT
-      department_id INT UNSIGNED,
+      salary DECIMAL (10) NOT NULL,
+      department_id INT(10)
       
   );
 
-  CREATE TABLE employee (
-      id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  CREATE TABLE employee (  --table for employee details
+      id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
       first_name VARCHAR(30),
       last_name VARCHAR(30),
       role_id INT UNSIGNED NOT NULL,
       manager_id INT UNSIGNED NULL
   );
 
-
-  --start with workbench!
---get this to work in workbench first
 
   
