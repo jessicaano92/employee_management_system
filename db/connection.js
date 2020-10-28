@@ -11,9 +11,12 @@ var connection = mysql.createConnection({
   });
 
 
+  
 //might be a good idea to put in a "wild card" if there is a WHERE statement
 
 //will need inquirer.prompt to prompt the user for questions regarding employees
 
 
 //will need id, firstName, lastName, title, department, salary, manager
+
+modules.exports = connection;
