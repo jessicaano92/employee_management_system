@@ -1,27 +1,53 @@
-// const db = require ("./db");
+
 const connection = require ("./db/connection");
 const inquirer = require ("inquirer");
+ require ("console.table");
+ const logo = require('asciiart-logo');
+ const config = require('./package.json');
+ console.log(logo(config).render());
 
 
 
 mainPrompt();
 
 function mainPrompt() {
+
     inquirer
     .prompt ({
         name: "action",
         type: "list",
         message: "What would you like to do?", 
-        choices: ["View all employees", 
-        "View all employees by department", 
-        "View all employees by manager", 
-        "Add employee", 
-        "Remove employee", 
-        "Update employee role",
-        "Update employee manager"]
-
-    }).then (response => {
-         switch(response.action) {
+        choices: [
+        {   name: "View All Employees", 
+            value: "VIEW_EMPLOYEES"
+        },
+        {
+            name: "View all employees by department", 
+            value: "EMPLOYEES_BY_DEPARTMENT",
+        },
+        {
+            name: "View all employees by manager", 
+            value: "EMPLOYEES_BY_MANAGER"
+        },
+        {   name: "Add employee", 
+            value: "ADD_EMPLOYEE"
+        },
+        {
+            name:"Remove employee", 
+            value: "REMOVE_EMPLOYEE"
+        },
+        {
+            name:"Update employee role",
+            value: "UPDATE_EMPLOYEE_ROLE"
+        },
+        { 
+            name: "Update employee manager",
+            value: "UPDATE_EMPLOYEE_MANAGER"
+        },
+      ]
+    }).then (res => {
+        console.log(res.action)
+         switch(res.action) {
 
                 case "VIEW_EMPLOYEES":
                     return viewEmployees();
@@ -48,40 +74,34 @@ function mainPrompt() {
                 case "ADD_DEPARTMENT":
                     return addDepartment();
                 case "REMOVE_DEPARTMENT":
-                    return addDepartment();
-                    default:
-                        break;
+                    return removeDepartment();
+                        default: break;
             }
         });
     }
-   
 
-// function viewEmployees () {
-//     inquirer.prompt ({
-//         name: "employee",
-//         type: "list",
-//         message: "What "
-//     })
-// }
+function viewEmployees () {
+    connection.query("SELECT * FROM employee_db.employee", function(err, res){
+        if (err) throw err;
+        console.table(res)
+        const employeeArr = [];
+        res.forEach(employeeObj => employeeArr.push(employeeObj.name))
 
-// function employeesByDepartment() {
-//   var query = "SELECT * FROM employee";
-//   connection.query(query, function (err, res){
-//       for (var i = 0; i < res.length; i ++) {
-//           console.log("Id: " + res[i].id + " || First Name: " + res[i].first_name + " || Last Name: " + res[i].last_name);
-//       }
-//       mainPrompt();
-//   });
+    });
+}
 
-    
-// }
-
-// // function employeesByManager() {
-// // }
-
+function employeesByDepartment() {
+  var query = "SELECT * FROM employee";
+  connection.query(query, function (err, res){
+      for (var i = 0; i < res.length; i ++) {
+          console.log("Id: " + res[i].id + " || First Name: " + res[i].first_name + " || Last Name: " + res[i].last_name);
+      }
+      mainPrompt();
+  });
+}
 
 function addEmployee () {
-    connection.query("SELECT * FROM role", function (err, res){
+    connection.query("SELECT * FROM employee_db.employee", function (err, res){
             if (err) throw err;
             inquirer.prompt  ([
                 {
@@ -99,53 +119,68 @@ function addEmployee () {
 }
 
 
-// function removeEmployee() {
-
-// }
-
-
-// function updateEmployeeRole() {
-// }
-
-
-// function updateEmployeeManager() {
-// }
+function viewRoles() {
+    connection.query("SELECT * FROM employee_db.role", function(err ,res){
+        if (err) throw err;
+        console.table(res)
+    });
+}
 
 
-// function viewRoles() {
-// }
+ function viewDepartments () {
+    connection.query("SELECT * FROM employee_db.department", function(err ,res){
+        if (err) throw err;
+        console.table(res)
+    });
+ }
 
 
-// function addRole() {
-// }
 
-
-//  function removeRole() {
-// }
-
-//  function viewDepartments () {
-
-// }
-
-
-//  function addDepartment () {
-//     const department = await prompt ([
-//         {
-//             name: "name",
-//             message: "What is the name of the department?"
-//         }
-//     ]).then(response => {
-//         connection.query('INSERT INTO department SET ?', response)
-//     })
+ function addDepartment () {
+    inquirer.prompt ([
+        {
+            name: "name",
+            message: "What is the name of the department?"
+        }
+    ]).then(response => {
+        connection.query('INSERT INTO department SET ?', response)
+    });
         
-//     console.log(`Added ${department.name} to the database`);
-//     // console.log(response)
+    console.log(`Added ${department.name} to the database`);
+    console.log(response)
+ };
+ 
 
-// }
+ function employeesByManager() {
+
+}
 
 
-// function removeDepartment() {
-// }
+function removeEmployee() {
+
+}
+
+function updateEmployeeRole() {
+}
+
+
+function updateEmployeeManager() {
+}
+
+function addRole() {
+}
+
+ function removeRole() {
+}
+
+
+function removeDepartment() {
+
+}
+
+
+
+ 
 
 
 

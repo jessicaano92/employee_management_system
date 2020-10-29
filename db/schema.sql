@@ -18,6 +18,8 @@ CREATE TABLE department (   --table for the name of the department
       title VARCHAR(30) NOT NULL, 
       salary DECIMAL (10) NOT NULL,
       department_id INT(10)
+      INDEX dep_ind (departmentId),
+      CONSTRAINT fk_deparment FOREIGN KEY (departmentId) REFERENCES department(id) ON DELETE --NEED HELP W/ THIS
       
   );
 
