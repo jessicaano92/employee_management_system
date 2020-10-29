@@ -8,8 +8,8 @@ USE employee_db;
 
 
 CREATE TABLE department (   --table for the name of the department
-      id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
-      department_name VARCHAR(30)
+     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
+     department_name VARCHAR(30)
 );
 
 
@@ -29,5 +29,3 @@ CREATE TABLE department (   --table for the name of the department
       manager_id INT UNSIGNED NULL
   );
 
-
-  

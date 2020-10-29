@@ -26,7 +26,7 @@ VALUES ("John", "Doe", 1, 3),
 ("Tom", "Allen", 7, 6), 
 ("Christian", "Eckenrode", 8, 2);
 
-SELECT * FROM employees;
+SELECT * FROM employee;
 SELECT * FROM role;
 SELECT * FROM department;
 

@@ -4,14 +4,14 @@ const inquirer = require ("inquirer");
 
 
 
-viewEmployees();
+mainPrompt();
 
-function viewEmployees() {
+function mainPrompt() {
     inquirer
     .prompt ({
         name: "action",
         type: "list",
-        message: "What would you like to do?",
+        message: "What would you like to do?", 
         choices: ["View all employees", 
         "View all employees by department", 
         "View all employees by manager", 
@@ -20,8 +20,8 @@ function viewEmployees() {
         "Update employee role",
         "Update employee manager"]
 
-    }).then (function(answer){
-         switch(answer.action) {
+    }).then (response => {
+         switch(response.action) {
 
                 case "VIEW_EMPLOYEES":
                     return viewEmployees();
@@ -49,48 +49,55 @@ function viewEmployees() {
                     return addDepartment();
                 case "REMOVE_DEPARTMENT":
                     return addDepartment();
-                    default: exit();
+                    default:
+                        break;
             }
         });
     }
    
 
-function employeesByDepartment() {
-    inquirer
-    .prompt ({
-            name: "employee",
-            type: "input",
-            message: ""
-        
-    })
+// function viewEmployees () {
+//     inquirer.prompt ({
+//         name: "employee",
+//         type: "list",
+//         message: "What "
+//     })
+// }
 
+// function employeesByDepartment() {
+//   var query = "SELECT * FROM employee";
+//   connection.query(query, function (err, res){
+//       for (var i = 0; i < res.length; i ++) {
+//           console.log("Id: " + res[i].id + " || First Name: " + res[i].first_name + " || Last Name: " + res[i].last_name);
+//       }
+//       mainPrompt();
+//   });
 
     
+// }
+
+// // function employeesByManager() {
+// // }
+
+
+function addEmployee () {
+    connection.query("SELECT * FROM role", function (err, res){
+            if (err) throw err;
+            inquirer.prompt  ([
+                {
+                    name: "first_name",
+                    message: "What is the employee's first name?"
+                },
+                {
+                    name: "last_name",
+                    message: "What is the employee's last name?"
+                }
+            ]);
+                console.log(res);
+    });
+   
 }
 
-
-// function employeesByManager() {
-// }
-
-
-// function addEmployee () {
-//     var query = connection.query("SELECT * FROM role", function (err, res){
-//             if (err) throw err;
-//             inquirer.prompt  ([
-//                 {
-//                     name: "first_name",
-//                     message: "What is the employee's first name?"
-//                 },
-//                 {
-//                     name: "last_name",
-//                     message: "What is the employee's last name?"
-//                 }
-//             ]);
-//                 console.log(res);
-//     });
-   
-// }
-// addEmployee();
 
 // function removeEmployee() {
 
