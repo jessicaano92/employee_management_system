@@ -1,16 +1,15 @@
 # employee_management_system
 
-# Unit 12 MySQL Homework: Employee Tracker
 
 ## Description
 
-This Employee Management System is supposed to allow the user to view employees, their id's, salaries, departments, roles, and managers. The user is provided with a list of options to choose from and from there can add, remove, view, or update information on an employee. 
-
-I really struggled with this assignment and have found MySQL is a huge challenge along with the functionality of getting the application to work.
+This Employee Management System allows the user to view employees, their id's, salaries, departments, roles, and managers. The user is provided with a list of options to choose from and from there can add, remove, view, or update information on an employee. 
 
 ## Installation
+npm i
 
-Inquirer, MySQL, 
+## Technology Used
+Inquirer, MySQL
 
 ## Credits
 
